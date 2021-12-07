@@ -98,10 +98,15 @@ Return the modified array.
 
 const addValues = (arr, value) => {
   // Solution code here...
+  arr.push(value)
 };
 
 const addNumbers = (num, arr, times, cb) => {
   // Solution code here...
+  for (let i=0;i<times;i++){
+    cb(arr,num)
+  }
+  return arr
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -142,6 +147,8 @@ Return the resulting output array.
 
 const fizzbuzz = (arr) => {
   // Solution code here...
+ 
+
 };
 
 /* ------------------------------------------------------------------------------------------------
