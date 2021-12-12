@@ -1,8 +1,5 @@
-function isLeapYear(year) {
-    if( year%4==0 && year%100==0 && year%400==0){
-      return true 
-  }else{
-   return  false 
-  }
-    }
-    //This is the praimary soluation but there are wrong in condeation
+function isLeapYear(x) {
+  if (x % 400 === 0) return true;
+  if (x % 100 === 0) return false;
+  return x % 4 === 0;
+}
