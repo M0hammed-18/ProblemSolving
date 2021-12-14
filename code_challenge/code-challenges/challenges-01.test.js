@@ -9,14 +9,13 @@ Use `forEach` to loop over the input array and work with each value.  Push the n
 ------------------------------------------------------------------------------------------------ */
 
 const addOne = (arr) => {
-  const numbers=[];
+  const numbers = [];
   arr.forEach((element) => {
-    numbers.push(element+1)
-    return
-    
+    numbers.push(element + 1);
+    return;
   });
-  return numbers
-  
+  return numbers;
+
   // Solution code here...
 };
 
@@ -30,11 +29,11 @@ Use `forEach` to loop over the input array. Modify each string, and add the upda
 
 const addExclamation = (arr) => {
   // Solution code here...
-  const string=[];
-  arr.forEach((element)=>{
-    string.push(element+"!")
-  })
-  return string
+  const string = [];
+  arr.forEach((element) => {
+    string.push(element + "!");
+  });
+  return string;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -47,10 +46,10 @@ Use `forEach` to loop over the input array. The modified strings should each be 
 
 const allUpperCase = (arr) => {
   // Solution code here...
-  const uppercase=[];
-  arr.forEach((element)=>{
-    uppercase.push(element.toUpperCase())
-  })
+  const uppercase = [];
+  arr.forEach((element) => {
+    uppercase.push(element.toUpperCase());
+  });
   return uppercase;
 };
 
@@ -66,18 +65,18 @@ Use `forEach` to build a new array of strings, each string modified by the callb
 
 const greeting = (word) => {
   // Solution code here...
-  const str= word.toUpperCase()+"!";
+  const str = word.toUpperCase() + "!";
   return str;
 };
 
 const speaker = (words, cb) => {
   // Solution code here...
-  let newstr=[];
+  let newstr = [];
 
-  words.forEach((element)=>{
-    newstr.push(cb(element))
-  })
-  return newstr
+  words.forEach((element) => {
+    newstr.push(cb(element));
+  });
+  return newstr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -98,15 +97,15 @@ Return the modified array.
 
 const addValues = (arr, value) => {
   // Solution code here...
-  arr.push(value)
+  arr.push(value);
 };
 
 const addNumbers = (num, arr, times, cb) => {
   // Solution code here...
-  for (let i=0;i<times;i++){
-    cb(arr,num)
+  for (let i = 0; i < times; i++) {
+    cb(arr, num);
   }
-  return arr
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -129,8 +128,15 @@ If the item is available, add it to your list. Return the final list.
 ------------------------------------------------------------------------------------------------ */
 
 const createList = (availableItems) => {
-  // Solution code here...
+  let list = [];
 
+  availableItems.forEach((item) => {
+    if (item.available === true) {
+      list.push(item.name);
+    }
+  });
+
+  return list;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -149,8 +155,6 @@ Return the resulting output array.
 
 const fizzbuzz = (arr) => {
   // Solution code here...
- 
-
 };
 
 /* ------------------------------------------------------------------------------------------------
