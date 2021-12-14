@@ -154,7 +154,21 @@ Return the resulting output array.
 ------------------------------------------------------------------------------------------------ */
 
 const fizzbuzz = (arr) => {
-  // Solution code here...
+  let numbers = [];
+
+  arr.forEach((number) => {
+    if (number % 5 == 0 && number % 3 == 0) {
+      numbers.push("Fizz Buzz");
+    } else if (number % 5 == 0) {
+      numbers.push("Buzz");
+    } else if (number % 3 == 0) {
+      numbers.push("Fizz");
+    } else {
+      numbers.push(number);
+    }
+  });
+
+  return numbers;
 };
 
 /* ------------------------------------------------------------------------------------------------
