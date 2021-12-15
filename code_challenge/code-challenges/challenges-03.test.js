@@ -15,7 +15,6 @@ HINT: Look at the tests to see how the callback functions are used.
 
 function upper(str) {
   return str.toUpperCase();
-
 }
 
 function lower(str) {
@@ -24,12 +23,11 @@ function lower(str) {
 
 const updateAnimal = (arr, callback) => {
   // Solution code here...
-  let newArray=[];
-  arr.forEach((String)=>{
-    newArray.push(callback(String))
-  })
+  let newArray = [];
+  arr.forEach((String) => {
+    newArray.push(callback(String));
+  });
   return newArray;
-
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -55,7 +53,7 @@ HINT: Beware... JS default is "Lexical" ordering.
 
 const sortNumbers = (arr) => {
   // Solution code here...
-  return arr.sort((a,b)=>a-b)
+  return arr.sort((a, b) => a - b);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -68,7 +66,7 @@ HINT: Do it with a custom sort callback, not with using `.reverse()`. ;)
 
 const sortBackwards = (arr) => {
   // Solution code here...
-  return arr.sort((a,b)=>b-a)
+  return arr.sort((a, b) => b - a);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -83,11 +81,9 @@ For example, ['Alphabet', 'Zebra', 'alphabet', 'carrot'] is correctly sorted.
 
 const alphabetize = (arr) => {
   // Solution code here...
- 
-    return arr.sort()
-  }
 
-
+  return arr.sort();
+};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6
@@ -104,7 +100,7 @@ Here is an example of the input:
 
 const sortByPrice = (arr) => {
   // Solution code here...
-  return arr.sort((a,b)=>a.price-b.price)
+  return arr.sort((a, b) => a.price - b.price);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -117,6 +113,9 @@ For example, ['Alphabet', 'alphabet', 'carrot', 'Zebra'] is correctly sorted, an
 
 const alphabetizeBetter = (arr) => {
   // Solution code here...
+  return arr.sort((a, b) => {
+    return a.toLowerCase() < b.toLowerCase() ? -1 : 1;
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
