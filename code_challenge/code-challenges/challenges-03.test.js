@@ -15,6 +15,7 @@ HINT: Look at the tests to see how the callback functions are used.
 
 function upper(str) {
   return str.toUpperCase();
+
 }
 
 function lower(str) {
@@ -23,6 +24,12 @@ function lower(str) {
 
 const updateAnimal = (arr, callback) => {
   // Solution code here...
+  let newArray=[];
+  arr.forEach((String)=>{
+    newArray.push(callback(String))
+  })
+  return newArray;
+
 };
 
 /* ------------------------------------------------------------------------------------------------
