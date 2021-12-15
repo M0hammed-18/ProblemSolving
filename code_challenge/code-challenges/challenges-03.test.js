@@ -166,6 +166,9 @@ const people = [
 
 const sortPeople = (arr) => {
   // Solution code here...
+  return arr.sort((a, b) => {
+    return a.lastName.toLowerCase() < b.lastName.toLowerCase() ? -1 : 1;
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
