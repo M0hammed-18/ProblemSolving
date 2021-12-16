@@ -16,12 +16,19 @@ const addTwo = (arr) => {
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
 
-Write a function named containsW that takes in a string. This function should use a regular expression pattern to return true if the string contains the letter 'w' in lower case or false if it does not. 
+Write a function named containsW that takes in a string. 
+This function should use a regular expression pattern to return true if the string contains the letter 'w' in lower case or false if it does not. 
 
 ------------------------------------------------------------------------------------------------ */
 
 const containsW = (str) => {
   // Solution code here...
+  if(str.match(/w/)){
+    return true
+  } else{
+    return false
+  }
+
 };
 
 /* ------------------------------------------------------------------------------------------------
