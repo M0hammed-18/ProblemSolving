@@ -27,9 +27,8 @@ let starWarsPeople = [
 
 const sortStarWarsCharacters = (starWarsArr) => {
   // Solution code here...
-  starWarsArr.sort((a,b)=>b.height-a.height)
-  return starWarsArr
-
+  starWarsArr.sort((a, b) => b.height - a.height);
+  return starWarsArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -41,8 +40,8 @@ Write a function named removeThree that takes an index and an array.
 
 const removeThree = (idx, arr) => {
   // Solution code here...
-   arr.splice(idx,3)
-   return arr
+  arr.splice(idx, 3);
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -53,8 +52,7 @@ Write a function named joinArray that takes an array and joins all of the elemen
 
 const joinArray = (arr) => {
   // Solution code here...
-   return arr.join(" ");
-    
+  return arr.join(" ");
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -73,14 +71,13 @@ For example, if the input is 'Welcome', the output will be:
 const howMuchPencil = (str) => {
   let result = [];
   // Solution code here...
-  let string=str;
+  let string = str;
   let i;
-  for(i=0;i<=str.length;i++){
-    result.push(string)
-    string=string.slice(1)
+  for (i = 0; i <= str.length; i++) {
+    result.push(string);
+    string = string.slice(1);
   }
-  return result
-
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -95,16 +92,16 @@ For example, wordsToCharList('gregor') returns ['g','r','e','g','o','r'].
 const wordsToCharList = (arr) => {
   // Solution code here...
   return arr.split("");
-    
-
 };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6
 
-You are making a grocery list for ingredients needed in the gruffalo crumble recipe, below. Rather than taking the entire recipe, you only want a list of the item names.
+You are making a grocery list for ingredients needed in the gruffalo crumble recipe, below. 
+Rather than taking the entire recipe, you only want a list of the item names.
 
-Write a function named listFoods that takes in the recipe and returns a new array of the food items without any amount or units. Just the name. For example, '1 cup flour' will return 'flour'.
+Write a function named listFoods that takes in the recipe and returns a new array of the food items
+ without any amount or units. Just the name. For example, '1 cup flour' will return 'flour'.
 
 Use slice for this function, maybe more than once. The Array.indexOf() method may also be helpful.
 
@@ -142,6 +139,12 @@ const gruffaloCrumble = {
 const listFoods = (recipe) => {
   let result = [];
   // Solution code here...
+  result = recipe.ingredients.map((e) => {
+    const spece = e.indexOf(" ");
+    const string = e.slice(spece + 1);
+    return string.slice(string.indexOf(" ") + 1);
+  });
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -155,6 +158,11 @@ You may also use other string or array methods.
 const splitFoods = (recipe) => {
   let result = [];
   // Solution code here...
+  result = recipe.ingredients.map((e) => {
+    const string = e.split(" ");
+    return string.slice(2).join(" ");
+  });
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -170,6 +178,10 @@ Return a new array containing just the verbs. For example, ['Mix until evenly di
 const stepActions = (recipe) => {
   let result = [];
   // Solution code here...
+  result = recipe.steps.map((e) => {
+    return e.split(" ")[0];
+  });
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -187,6 +199,9 @@ For example:
 
 const removeEvenValues = (arr) => {
   // Solution code here...
+  return arr.filter((e) => {
+    return e % 2 !== 0;
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -206,6 +221,7 @@ removeLastCharacters('Gregor', 9) returns ''
 
 const removeLastCharacters = (str, numberOfCharacters) => {
   // Solution code here...
+return str.slice(0,str.length-numberOfCharacters)
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -217,6 +233,11 @@ Write a function named totalSumCSV that, given a string of comma-separated value
 const totalSumCSV = (str) => {
   let total = 0;
   // Solution code here...
+  const value=str.split(",")
+  value.forEach((value)=>{
+    total+=Number(value)
+  })
+  return total
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -229,6 +250,7 @@ For example, removeVowels('gregor') returns 'grgr'.
 
 const removeVowels = (str) => {
   // Solution code here...
+  return str.replace(/[aeiou]/gi,"")
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -243,7 +265,12 @@ Similarly, extractVowels('The quick brown fox') returns ['Th qck brwn fx', 'eioo
 
 const extractVowels = (str) => {
   // Solution code here...
+  let result=[]
+  result[0]=str.replace(/[aeiou]/gi,"")
+  result[1]=str.replace(/[^aeiou]/gi,"").split("").sort().join("")
+  return result
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 TESTS
@@ -386,8 +413,8 @@ describe("Testing challenge 9", () => {
 
     list = [6, 3, 19, 43, 12, 66, 43];
     removeEvenValues(list);
-    expect(removeEvenValues (list) ).toStrictEqual([3, 19, 43, 43]);
-    expect(removeEvenValues (list).length).toStrictEqual(4);
+    expect(removeEvenValues(list)).toStrictEqual([3, 19, 43, 43]);
+    expect(removeEvenValues(list).length).toStrictEqual(4);
   });
 });
 
