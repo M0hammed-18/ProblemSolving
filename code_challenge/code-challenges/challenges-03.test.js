@@ -258,6 +258,11 @@ You DO NOT need to use your solution to Challenge 9 in completing Challenge 10.
 
 const sortSchedule = (arr) => {
   // Solution code here...
+  return arr.sort((a,b)=>{
+    const metting1=a.end-a.start
+    const metting2=b.end-a.startr
+    return 
+  })
 };
 
 /* ------------------------------------------------------------------------------------------------
