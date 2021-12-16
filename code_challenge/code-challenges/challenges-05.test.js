@@ -35,11 +35,14 @@ const sortStarWarsCharacters = (starWarsArr) => {
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
 
-Write a function named removeThree that takes an index and an array. The function should removes three items in the array starting with the value at the index. 
+Write a function named removeThree that takes an index and an array.
+ The function should removes three items in the array starting with the value at the index. 
 ------------------------------------------------------------------------------------------------ */
 
 const removeThree = (idx, arr) => {
   // Solution code here...
+   arr.splice(idx,3)
+   return arr
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -50,6 +53,8 @@ Write a function named joinArray that takes an array and joins all of the elemen
 
 const joinArray = (arr) => {
   // Solution code here...
+  arr.join('')
+  return arr
 };
 
 /* ------------------------------------------------------------------------------------------------
