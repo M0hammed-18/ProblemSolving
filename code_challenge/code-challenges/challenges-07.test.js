@@ -8,6 +8,8 @@ Write a function named replaceZeros that, given a string, uses Regex to replace 
 
 const replaceZeros = (string) => {
   // Solution code here...
+  const rep = string.replace(/[0]/g, "zero");
+  return rep;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -18,16 +20,23 @@ Write a function named addOne that, given an array of numbers, uses map to retur
 
 const addOne = (arr) => {
   // Solution code here...
+  return arr.map((e) => {
+    return e + 1;
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
 
-Write a function named addQuestion that, given an array of strings, uses map to return a new array containing each string followed by a question mark character.
+Write a function named addQuestion that, given an array of strings, 
+uses map to return a new array containing each string followed by a question mark character.
 ------------------------------------------------------------------------------------------------ */
 
 const addQuestion = (arr) => {
   // Solution code here...
+  return arr.map((e) => {
+    return e + "?";
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -42,32 +51,51 @@ For example, twoToThe([1,2,3]) returns [2,4,8] because 2 ^ 1 = 2, 2 ^ 2 = 4, and
 
 const forLoopTwoToThe = (arr) => {
   // Solution code here...
+  let power = [];
+  let i;
+  for (i = 0; i < arr.length; i++) {
+    power.push(Math.pow(2, arr[i]));
+  }
+  return power;
 };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
 
-Write a function named forEachTwoToThe that produces the same output as your forLoopTwoToThe function from challenge 1, but uses forEach instead of a for loop.
+Write a function named forEachTwoToThe that produces the same output as your forLoopTwoToThe function from challenge 1,
+ but uses forEach instead of a for loop.
 ------------------------------------------------------------------------------------------------ */
 
 const forEachTwoToThe = (arr) => {
   // Solution code here...
+  let result = [];
+  arr.forEach((e) => {
+    result.push(Math.pow(2, e));
+  });
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6
 
-Write a function named mapTwoToThe that produces the same output as your forLoopTwoToThe function from challenge 1 and your forEachTwoToThe function from challenge 2, but uses map instead of a for loop or forEach.
+Write a function named mapTwoToThe that produces the same output as your forLoopTwoToThe function from challenge 1 
+and your forEachTwoToThe function from challenge 2, but uses map instead of a for loop or forEach.
 ------------------------------------------------------------------------------------------------ */
 
 const mapTwoToThe = (arr) => {
   // Solution code here...
+  let result = [];
+  arr.map((e) => {
+    result.push(Math.pow(2, e));
+  });
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
 
-Write a function named charCode that, given an array of letters as an input, uses map to return a new array where each element is the result of the `charCodeAt` method on the original array element.
+Write a function named charCode that, given an array of letters as an input,
+ uses map to return a new array where each element is the result of the `charCodeAt` method on the original array element.
 
 Read the MDN documentation on String.charCodeAt() if necessary.
 
@@ -76,6 +104,11 @@ For example: charCode(['h','i']) returns [104, 105].
 
 const charCode = (arr) => {
   // Solution code here...
+  let result = [];
+  arr.map((e) => {
+    result.push(e.charCodeAt());
+  });
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -90,6 +123,16 @@ For example: evenOdd([1,2,3]) returns ['odd','even','odd'].
 
 const evenOdd = (arr) => {
   // Solution code here...
+
+  return arr.map((e) => {
+    if (e % 2 === 0) {
+      return "even";
+    } else if (e % 2 === 1) {
+      return "odd";
+    } else {
+      return "N/A";
+    }
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -136,6 +179,7 @@ const snorlaxAbilities = {
 
 const extractAbilities = (arr) => {
   // Solution code here...
+  return arr.map((e) => e.ability.name);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -183,6 +227,10 @@ const snorlaxStats = {
 
 const extractStats = (arr) => {
   // Solution code here...
+  return arr.map((e) => ({
+    name: e.stat.name,
+    total: e.effort + e.baseStat,
+  }));
 };
 
 /* ------------------------------------------------------------------------------------------------
