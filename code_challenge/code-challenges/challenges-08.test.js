@@ -197,7 +197,7 @@ const characters = [
 const getCharactersWithoutChildren = (arr) => {
   // Solution code here...
   return arr.filter((e) => !e.children);
-};
+}; 
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 10 - Stretch Goal

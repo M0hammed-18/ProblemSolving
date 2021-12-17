@@ -20,6 +20,13 @@ Becomes:
 
 function transformToLis(obj) {
   // Solution code here...
+
+  let result = [];
+
+  for (const [key, value] of Object.entries(obj)) {
+    result.push(`<li>${key}: ${value}</li>`);
+  }
+  return result;
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -31,12 +38,16 @@ Write a function named addValues that, given an array of numbers as input, uses 
 
 const addValues = (arr) => {
   // Solution code here...
+  return arr.reduce((acc, e) => {
+    return (acc += e);
+  }, 0);
 };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
 
-Write a function named addPurchases that, given an array of objects as input, uses reduce to find the total amount purchased. Each object contains the keys `item` and `purchasePrice` like the example.
+Write a function named addPurchases that, given an array of objects as input, 
+uses reduce to find the total amount purchased. Each object contains the keys `item` and `purchasePrice` like the example.
 
 {
   item: 'switch'
@@ -47,18 +58,25 @@ Write a function named addPurchases that, given an array of objects as input, us
 
 const addPurchases = (arr) => {
   // Solution code here...
+  return arr.reduce((acc, e) => {
+    return (acc += e.purchasePrice);
+  }, 0);
 };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
 
-Write a function named countNumberOfElements that, given an array as input, uses reduce to count the number of elements in the array.
+Write a function named countNumberOfElements that, given an array as input, 
+ reduce to count the number of elements in the array.
 
 Note: You may not use the array's built-in length property.
 ------------------------------------------------------------------------------------------------ */
 
 const countNumberOfElements = (arr) => {
   // Solution code here...
+  return arr.reduce((e) => {
+    return (e += 1);
+  }, 0);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -122,6 +140,10 @@ let starWarsData = [
 
 const returnNames = (arr) => {
   // Solution code here...
+  return arr.reduce((acc, e) => {
+    acc.push(e.name);
+    return acc;
+  }, []);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -134,12 +156,14 @@ Note: You must use reduce for this challenge. You may not use the built-in .reve
 
 const reversedString = (str) => {
   // Solution code here...
+  return str.split("").reduce((acc, e) => e + acc, "");
 };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
 
-Write a function named countNumberOfChildren that, given the array of characters, below, uses reduce to return the total number of children in the data set.
+Write a function named countNumberOfChildren that, given the array of characters, below,
+ uses reduce to return the total number of children in the data set.
 ------------------------------------------------------------------------------------------------ */
 
 const characters = [
@@ -187,6 +211,12 @@ const characters = [
 
 const countNumberOfChildren = (arr) => {
   // Solution code here...
+  return arr.reduce((acc, e) => {
+    if (e.children) {
+      acc += e.children.length;
+    }
+    return acc;
+  }, 0);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -199,6 +229,13 @@ Hint: The accumulator should begin as { count: 0, sum: 0 }
 
 const calculateAverage = (arr) => {
   // Solution code here...
+  let avrage = 0;
+  const plus = arr.reduce((acc, e) => {
+    avrage += 1;
+    acc += e;
+    return acc;
+  }, 0);
+  return plus / avrage;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -220,6 +257,10 @@ const isPrime = (value) => {
 
 const countPrimeNumbers = (arr) => {
   // Solution code here...
+  return arr.reduce((acc, e) => {
+    if (isPrime(e)) acc++;
+    return acc;
+  }, 0);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -263,6 +304,10 @@ const snorlaxData = {
 
 const extractStat = (statName, arr) => {
   // Solution code here...
+  return arr.reduce((acc, e) => {
+    if (e.stat.name === statName) acc = e;
+    return acc;
+  }, {});
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -277,6 +322,12 @@ Write a function named extractChildren that, given the array of characters from 
 
 const extractChildren = (arr) => {
   // Solution code here...
+  return arr
+    .filter((e) => e.name.includes("a"))
+    .reduce((acc, e) => {
+      if (e.children) acc.push(...e.children);
+      return acc;
+    }, []);
 };
 
 /* ------------------------------------------------------------------------------------------------
