@@ -24,12 +24,14 @@ Returns: ['dyoll', 'eimaj'];
 
 const getNames = (arr) => {
   // Solution code here...
+  return arr.map((e) => e.name.split("").reverse().join(""));
 };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
 
-Write a function named count that, given an integer and an array of arrays, uses either filter, map, or reduce to count the amount of times the integer is present in the array of arrays.
+Write a function named count that, given an integer and an array of arrays, uses either filter, map, 
+or reduce to count the amount of times the integer is present in the array of arrays.
 
 Note: You might need to use the same method more than once.
 
@@ -38,20 +40,30 @@ For example, count(5, [[1, 3, 5, 7, 9], [5, 5, 5], [1, 2, 3]]) returns 4.
 
 const count = (target, input) => {
   // Solution code here...
+  let value = 0;
+
+  input.map((e) => e.filter((i) => (i == target ? (value += 1) : null)));
+
+  return value;
 };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
 
-Write a function that, given an array of integer arrays as input, calculates the total sum of all the elements in the array.
+Write a function that, given an array of integer arrays as input,
+ calculates the total sum of all the elements in the array.
 
-You may want to use filter, map, or reduce for this problem, but are not required to. You may need to use the same method more than once.
+You may want to use filter, map, or reduce for this problem, but are not required to.
+ You may need to use the same method more than once.
 
 For example, [[1, 2, 3, 4, 5], [6, 7, 2, 4, 5, 7], [9, 2, 3, 6,]] returns 66.
 ------------------------------------------------------------------------------------------------ */
 
 const totalSum = (input) => {
   // Solution code here...
+  let array = 0;
+  input.map((e) => e.map((e) => (array += e)));
+  return array;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -68,6 +80,17 @@ For example, [ [0,2,5,4], [2,4,10], [] ] should return [ [1, 32], [1024], [] ].
 
 const divisibleByFiveTwoToThePower = (input) => {
   // Solution code here...
+  let result = [];
+  input.map((e) => {
+    let value = [];
+    e.filter((i) => {
+      if (i % 5 == 0 && typeof i == "number") {
+        value.push(Math.pow(2, i));
+      }
+    });
+    result.push(value);
+  });
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -136,16 +159,29 @@ let starWarsData = [
 
 let findMaleAndFemale = (data) => {
   // Solution code here...
+
+  let string = "";
+
+  data.map((e) => {
+    if (e.gender == "male" || e.gender == "female") string += e.name + " and ";
+  });
+  return string.slice(0, -5);
 };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6 
 
-Write a function named findShortest that, given the Star Wars data from Challenge 6, uses any combination of filter, map and reduce to return the name of the shortest character.
+Write a function named findShortest that,
+ given the Star Wars data from Challenge 6, uses any combination of filter,
+  map and reduce to return the name of the shortest character.
 ------------------------------------------------------------------------------------------------ */
 
 let findShortest = (data) => {
   // Solution code here...
+  const test = data.reduce((acc, e) => {
+    return Number(acc.height) < Number(e.height) ? acc : e;
+  });
+  return test.name;
 };
 
 /* ------------------------------------------------------------------------------------------------
