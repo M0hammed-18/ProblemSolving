@@ -10,6 +10,12 @@ E.g. [4,2,7,5,9,2] -> 9
 ------------------------------------------------------------------------------------------------ */
 const maxInArray = (arr) => {
   // Solution code here...
+  return arr.reduce((acc, e) => {
+    if (acc < e) {
+      acc = e;
+    }
+    return acc;
+  }, 0);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -28,6 +34,15 @@ return: 23
 ------------------------------------------------------------------------------------------------ */
 const findMax = (matrix) => {
   // Solution code here...
+  let number;
+  return matrix.reduce((acc, e) => {
+    number = e.reduce((acc, value) => {
+      if (acc < value) acc = value;
+      return acc;
+    }, 0);
+    if (acc < number) acc = number;
+    return acc;
+  }, 0);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -46,14 +61,23 @@ return: 35
 ------------------------------------------------------------------------------------------------ */
 const totalSum = (matrix) => {
   // Solution code here...
+  let total = 0;
+  matrix.map((e) => {
+    let test = e.map((num) => (total += num));
+  });
+  return total;
 };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
 
-You friend Pat has a chain of stores around the greater Seattle area. He specializes in selling salmon cookies. Pat has data for the hourly sales of cookies per hour for each store. He wants to create an array of the total number of cookies sold per hour for all of his stores combined.
+You friend Pat has a chain of stores around the greater Seattle area. He specializes in selling salmon cookies.
+ Pat has data for the hourly sales of cookies per hour for each store. 
+ He wants to create an array of the total number of cookies sold per hour for all of his stores combined.
 
-Write a function named grandTotal that adds up the cookies sales for each hour of operation for all of the stores combined. For example, the first element in the hourlySales array should be the sum of the cookies sold in the 9:00 a.m. hour at all five stores combined.
+Write a function named grandTotal that adds up the cookies sales for each hour of operation for all of the stores combined. 
+For example, the first element in the hourlySales array should be the sum of the cookies 
+sold in the 9:00 a.m. hour at all five stores combined.
 
 For this example, the total at 9:00 a.m. is 17 + 26 + 7 + 5 + 33, or 88 total cookies.
 
@@ -85,20 +109,38 @@ const cookieStores = [firstPike, seaTac, seattleCenter, capHill, alkiBeach];
 
 const grandTotal = (stores) => {
   // Solution code here...
+  let array = [];
+  stores.forEach((e) => {
+    e.forEach((x, y) => {
+      if (array[y]) {
+        return (array[y] += x);
+      } else {
+        return array.push(x);
+      }
+    });
+  });
+  return array;
 };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
 
-Pat has decided that he would also like to organize his data as objects containing the number of cookies sold per hour and the time.
+Pat has decided that he would also like to organize his data as objects containing the number of cookies sold per hour
+ and the time.
 
 Here is sample data for the 9:00 sales: { sales: '88 cookies', time: '9 a.m.' }.
 
-Write a function named salesData that uses forEach to iterate over the hourlySales array and create an object for each hour. Return an array of the formatted data.
+Write a function named salesData that uses forEach to iterate over the hourlySales array and 
+create an object for each hour. Return an array of the formatted data.
 ------------------------------------------------------------------------------------------------ */
 
 const salesData = (hours, data) => {
   // Solution code here...
+  let array = [];
+  data.forEach((e, i) => {
+    array.push({ sales: `${e} cookies`, time: hours[i] });
+  });
+  return array;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -136,6 +178,14 @@ const errands = [
 
 const howManyTreats = (arr) => {
   // Solution code here...
+  return arr.reduce((acc, store) => {
+    let res = store.items.reduce((acc, i) => {
+      if (i.name == "Treats") acc += i.quantity;
+      return acc;
+    }, 0);
+    acc += res;
+    return acc;
+  }, 0);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -158,18 +208,33 @@ The top row of the board is considered row zero and row numbers increase as they
 
 const battleship = (board, row, col) => {
   //  Solution code here...
+  let res;
+  let i;
+  for (i = 0; i < board.length; i++) {
+    if (board[row][col] == "#") {
+      return (res = "hit");
+    } else {
+      return (res = "miss");
+    }
+  }
+  return res;
 };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 8 - Stretch Goal
 
-Write a function named calculateProduct that takes in a two-dimensional array of numbers, multiplies all of the numbers in each array, and returns the final product. This function should work for any number of inner arrays.
+Write a function named calculateProduct that takes in a two-dimensional array of numbers, multiplies all of the numbers in each array,
+ and returns the final product. This function should work for any number of inner arrays.
 
 For example, the following input returns a product of 720: [[1,2], [3,4], [5,6]]
 ------------------------------------------------------------------------------------------------ */
 
 const calculateProduct = (numbers) => {
   // Solution code here...
+  return numbers.reduce((acc, e) => {
+    e.forEach((e) => (acc *= e));
+    return acc;
+  }, 1);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -190,6 +255,7 @@ const weeklyTemperatures = [
 
 const averageDailyTemperature = (weather) => {
   // Solution code here...
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -218,9 +284,11 @@ CHALLENGE 11 - Stretch Goal
 
 Write a function called excel that accepts a string representing rows and columns in a table.
 
-Rows are seperated by newline "\n" characters. Columns are seperated by commas. For example, '1,1,1\n4,4,4\n9,9,9' represents a 3x3 table.
+Rows are seperated by newline "\n" characters. Columns are seperated by commas. 
+For example, '1,1,1\n4,4,4\n9,9,9' represents a 3x3 table.
 
-The function should parse the string as rows and columns and compute the sum of the values for each row. Return an array with the sum of the values in each row.
+The function should parse the string as rows and columns and compute the sum of the values for each row.
+ Return an array with the sum of the values in each row.
 
 For example, excel('1,1,1\n4,4,4\n9,9,9') returns [3, 12, 27].
 ------------------------------------------------------------------------------------------------ */

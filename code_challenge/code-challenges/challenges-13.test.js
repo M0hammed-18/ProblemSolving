@@ -3,23 +3,34 @@
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 1 - Review
 
-Write a function named longestString that takes in an array of strings and returns the index position of the longest string. 
+Write a function named longestString that takes in an array of strings and 
+returns the index position of the longest string. 
 ------------------------------------------------------------------------------------------------ */
 
 const longestString = (arr) => {
   // Solution code here...
+  let x = Math.max(
+    ...arr.map((e) => {
+      e.length;
+    })
+  );
+  return arr.findIndex((i) => {
+    i.length == x;
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
 
-Write a function named firstLetters that takes in an array of strings and returns an array containing only the first letter of each string.
+Write a function named firstLetters that takes in an array of strings and 
+returns an array containing only the first letter of each string.
 
 For example, ['this is great :)', 'wow', 'whyyyyyy :(', ':)))))'] returns ['t', 'w', 'w', ':']
 ------------------------------------------------------------------------------------------------ */
 
 const firstLetters = (arr) => {
   // Solution code here...
+  // return arr.map((e) => e.slice(0.1));
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -32,6 +43,7 @@ For example, ['this is great :)', 'wow', 'whyyyyyy :(', ':)))))'] returns ['this
 
 const findHappiness = (arr) => {
   // Solution code here...
+  return arr.filter((e) => e.includes(":)"));
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -44,6 +56,12 @@ For example, (123) 456-7890 returns 1234567890
 
 const standardizePhoneNumbers = (arr) => {
   // Solution code here...
+  let array = [];
+  arr.map((e, i) => {
+    array[i] = "" + e.match(/\d+/g);
+    array[i] = array[i].split(",").join("");
+  });
+  return array;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -56,6 +74,14 @@ For example, 'abcdefg' returns 'bdf'
 
 const onlyOddChars = (str) => {
   // Solution code here...
+  return str
+    .split("")
+    .filter((e, i) => {
+      if (i % 2 != 0) {
+        return e;
+      }
+    })
+    .join("");
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -66,6 +92,7 @@ Write a function named allHappy that takes in an array of strings and returns a 
 
 const allHappy = (arr) => {
   // Solution code here...
+  return arr.every((e) => e.includes(":)"));
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -76,6 +103,7 @@ Write a function named findAnything that takes in an array of strings, along wit
 
 const findAnything = (arr, target) => {
   // Solution code here...
+  return arr.filter((e) => e.includes(target));
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -86,6 +114,7 @@ Write a function named findEvery that takes in an array of strings, along with a
 
 const findEvery = (arr, target) => {
   // Solution code here...
+  return arr.every((e) => e.includes(target));
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -142,13 +171,20 @@ const sortByDay = (arr) => {
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 11 - Stretch Goal
 
-Write a function named characterByIndex that takes in an array of strings and returns an array containing the first character of the first string, the second character of the second string, etc.
+Write a function named characterByIndex that takes in an array of strings and 
+returns an array containing the first character of the first string, the second character of the second string, etc.
 
 For example, ['abcd', 'efgh', 'ijkl', 'mnop'] returns ['a', 'f', 'k', 'p']
 ------------------------------------------------------------------------------------------------ */
 
 const characterByIndex = (arr) => {
   // Solution code here...
+  let array = [];
+  let i;
+  for (i = 0; i < arr.length; i++) {
+    array.push(arr[i][i]);
+  }
+  return array;
 };
 
 /* ------------------------------------------------------------------------------------------------

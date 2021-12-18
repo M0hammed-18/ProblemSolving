@@ -9,8 +9,7 @@ Write a function called addTwo that takes in an array and adds two to every valu
 
 const addTwo = (arr) => {
   // Solution code here...
-  return arr.map(number=>
-    number+=2)
+  return arr.map((number) => (number += 2));
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -23,12 +22,11 @@ This function should use a regular expression pattern to return true if the stri
 
 const containsW = (str) => {
   // Solution code here...
-  if(str.match(/w/)){
-    return true
-  } else{
-    return false
+  if (str.match(/w/)) {
+    return true;
+  } else {
+    return false;
   }
-
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -46,28 +44,35 @@ For example:
 
 const isNum = (input) => {
   // Solution code here...
-  if(input.toString().match(/\number/)){
-    return true
-  }else {
-    return false 
+  if (input.toString().match(/\d/)) {
+    return true;
+  } else {
+    return false;
   }
 };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
 
-Write a function named containsWorld that takes in a string or number of any length. This function should use a regular expression pattern to return true if the input contains the word 'world' all in lower-case letters, and false if the input does not.
+Write a function named containsWorld that takes in a string or number of any length.
+ This function should use a regular expression pattern to return true 
+ if the input contains the word 'world' all in lower-case letters, and false if the input does not.
 
 ------------------------------------------------------------------------------------------------ */
 
 const containsWorld = (input) => {
   // Solution code here...
+ let res=/\bworld\b/;
+ let test=res.test(input)
+ return test;
 };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
 
-Write a function named isCapitalized that takes in a string. This function should use a regular expression pattern to match all words that begin with a capital letter. It should only match words, not punctuation.
+Write a function named isCapitalized that takes in a string. 
+This function should use a regular expression pattern to match all words that begin with a capital letter. 
+It should only match words, not punctuation.
 
 Return an array containing all the matches.
 ------------------------------------------------------------------------------------------------ */
@@ -83,6 +88,13 @@ Write a function named citiesAtoJ that takes in an array of city names and uses 
 ------------------------------------------------------------------------------------------------ */
 const citiesAtoJ = (arr) => {
   // Solution code here...
+  let array=[]
+  arr.forEach((e)=>{
+    let res=e.match(/^[A-Ja-j].*/g)
+    if(res)array.push(...res)
+  })
+  return array
+  
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -113,6 +125,7 @@ The expected output of "Hello, and have a wonderful day!" is ["and ", "have ", "
 
 const noPunctuation = (str) => {
   // Solution code here...
+  return str.match(/[A-Za-z-0-9]+\s/g);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -129,6 +142,7 @@ For example, 'Welcome to Code 301!' will return 'W_lc_m_ t_ C_d_ 301!'.
 
 let hangman = (str) => {
   // Solution code here...
+  return str.replace(/A|a|E|e|I|i|O|o|U|u/g, '_')
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -146,6 +160,7 @@ const seashells =
 
 const findShells = (str) => {
   // Solution code here...
+  return str.match(/\w*ells\b/g)
 };
 
 /* ------------------------------------------------------------------------------------------------

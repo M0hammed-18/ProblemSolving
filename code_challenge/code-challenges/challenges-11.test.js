@@ -13,6 +13,7 @@ You can assume that neither firstName nor lastName will be blank
 ------------------------------------------------------------------------------------------------ */
 const toLastNames = (people) => {
   // Solution code here...
+  return people.map((e) => `${e.firstName} ${e.lastName}`);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -30,7 +31,8 @@ const validatePin = (pin) => {
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
 
-Write a function named validateWord that uses a regular expression pattern to validate that a word is between 5 and 10 characters long.
+Write a function named validateWord that uses a regular expression pattern to validate 
+that a word is between 5 and 10 characters long.
 
 If the word is between 5 and 10 characters long, return true. Otherwise, return false.
 ------------------------------------------------------------------------------------------------ */
@@ -69,6 +71,9 @@ Note: if you ever need to validate an email using a regex in practice, the Inter
 
 const validateEmail = (email) => {
   // Solution code here...
+  return email.match(/^([A-Za-z0-9]+|[A-Za-z0-9]+)@[A-Za-z]+(.net|.com|.org)$/g)
+    ? true
+    : false;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -94,6 +99,11 @@ Return either true or false.
 
 const validatePhoneNumber = (phoneNumber) => {
   // Solution code here...
+  return phoneNumber.match(
+    /^(\(\d{3}\)(\s\d{3}-\d{4}|\d{3}\s\d{4})|\d{3}\s(\d{3}-\d{4}|\d{3}\s\d{4})|\d{3}-(\d{7}|\d{3}\s\d{4}|\d{3}-\d{4})|\d{6}-\d{4}|\d{10}|\d{3}\s\d{7})$/g
+  )
+    ? true
+    : false;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -107,6 +117,8 @@ findTagNames(['<div><h1>Hello, world!</h1></div>', '<p>Welcome to my site</p>'])
 
 const findTagNames = (elements) => {
   // Solution code here...
+  let res=elements.map((e)=>e.match(/\/.+?(?=>)/g))
+  return res.join(',').split(',')
 };
 
 /* ------------------------------------------------------------------------------------------------
